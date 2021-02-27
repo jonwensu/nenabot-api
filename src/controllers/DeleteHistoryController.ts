@@ -14,8 +14,9 @@ router.post('/delete', async (req, res) => {
 router.get('/delete/:channelId', async (req, res) => {
 	const {
 		params: { channelId },
+		query: { size },
 	} = req;
-	const response = await DeleteHistoryService.get(channelId);
+	const response = await DeleteHistoryService.get(channelId, +(size || 1));
 	console.log(response);
 
 	res.status(200).send(response);
